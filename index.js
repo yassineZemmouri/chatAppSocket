@@ -15,4 +15,9 @@ sio.on('connection', (visitor) => {
         console.log(data.message);
         sio.sockets.emit("new-msg", data)
     })
+
+    visitor.on("broad", function (data) {
+        console.log(data);
+        visitor.broadcast.emit("new-broad", data)
+    })
 })
